@@ -1,21 +1,32 @@
-import React from "react";
-import little_lemon_logo from "../images/little_lemon_logo.png"
+import React, { useState } from "react";
+import { Link } from 'react-router-dom';
+import CartIcon from "./CartIcon";
+export default function Nav() {
+    // State for managing the visibility of the menu on mobile screens
+    const [isMenuVisible, setIsMenuVisible] = useState(false);
 
-const Nav = () => {
-    return(
-        <nav>
-            <img src={little_lemon_logo} alt="Little Lemon Logo" ></img>
-            <ul>
-                <li><a>Home</a></li>
-                <li><a>About</a></li>
-                <li><a>Menu</a></li>
-                <li><a>Reservations</a></li>
-                <li><a>Order Online</a></li>
-                <li><a>Login</a></li>
+    // Toggle the visibility of the menu
+    const toggleMenu = () => {
+        setIsMenuVisible(!isMenuVisible);
+    };
 
-            </ul>
+
+    return (
+        <nav className="nav-container">
+            <img className="nav-logo" src="../images/logo.svg" alt="Logo" />
+            <div className={`nav-links ${isMenuVisible ? "active" : ""}`}>
+                <Link to="/" className="nav-items" onClick={toggleMenu}>Home</Link>
+                <Link to="/menu" className="nav-items" onClick={toggleMenu}>Menu</Link>
+                <Link to="/about" className="nav-items" onClick={toggleMenu}>About</Link>
+                <Link to="/booking" className="nav-items" onClick={toggleMenu}>Booking</Link>
+                <Link to="/login" className="nav-items" onClick={toggleMenu}>Login</Link>
+                <Link to="/order" className="nav-items" onClick={toggleMenu}><CartIcon /></Link>
+            </div>
+            <div className="hamburger" onClick={toggleMenu}>
+                <span className="bar"></span>
+                <span className="bar"></span>
+                <span className="bar"></span>
+            </div>
         </nav>
     )
 }
-
-export default Nav;

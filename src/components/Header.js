@@ -1,20 +1,20 @@
 import React from "react";
-import food1 from "../images/food1.avif"
+import restaurantfood from "../images/restaurantfood.jpg"
 import { Link } from "react-router-dom";
 
 
 const Header = () => {
     return(
-        <header>
-            <section>
-            <div>
+        <header className="header-background">
+            <section className="header-container">
+            <div className="header-content">
             <h2>Little Lemon Restaurant</h2>
             <h3>Brooklyn</h3>
             <p>We are a family owned Mediterraneran restaurant, focused on traditional recipes servred with a modern twist.</p>
             <Link to="/Booking"><button aria-label="On Click">Reserve Table</button></Link>
             </div>
-            <div>
-                <img src={food1} />
+            <div className="header-image">
+                <img src={restaurantfood} />
             </div>
             </section>
         </header>
